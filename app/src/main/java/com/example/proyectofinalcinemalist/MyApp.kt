@@ -16,6 +16,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
@@ -36,7 +40,14 @@ enum class Pantallas(){
 fun MyApp(
     navController: NavHostController = rememberNavController()
 ){
-    Scaffold() {
+    var showTopBar by remember { mutableStateOf(false) }
+    Scaffold(
+        topBar = {
+            if (showTopBar) {
+                TopBarCinemalist()
+            }
+        }
+    ) {
             innerPadding ->
         NavHost(
             navController = navController,
@@ -47,6 +58,7 @@ fun MyApp(
                 .padding(innerPadding)
         ){
             composable(Pantallas.Login.name){
+                showTopBar = false
                 Login(
                     goToPrincipal = {
                         navController.navigate(Pantallas.Principal.name)
@@ -57,6 +69,7 @@ fun MyApp(
                 )
             }
             composable(Pantallas.Register.name){
+                showTopBar = false
                 Register(
                     goToPrincipal = {
                         navController.navigate(Pantallas.Principal.name)
@@ -64,6 +77,7 @@ fun MyApp(
                 )
             }
             composable(Pantallas.Principal.name){
+                showTopBar = true
                 Principal(
                     goToFicha = {
                         navController.navigate(Pantallas.Ficha.name)
