@@ -30,6 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -133,13 +134,18 @@ fun TopBarCinemalist(){
             IconButton(onClick = { scope.launch { estadoDrawer.open() } }) {
                 Icon(
                     imageVector = Icons.Filled.Menu,
-                    contentDescription = "menu"
+                    contentDescription = "menu",
+                    tint = Color.White
                 )
             }
         },
         actions = {
             IconButton(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Filled.Search, contentDescription = "busqueda")
+                Icon(
+                    imageVector = Icons.Filled.Search,
+                    contentDescription = "busqueda",
+                    tint = Color.White
+                )
             }
         }
     )
