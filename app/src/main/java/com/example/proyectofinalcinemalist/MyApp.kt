@@ -97,6 +97,9 @@ fun MyApp(
                 Principal(
                     goToFicha = {
                         navController.navigate(Pantallas.Ficha.name)
+                    },
+                    goToPerfil = {
+                        navController.navigate(Pantallas.Perfil.name)
                     }
                 )
             }

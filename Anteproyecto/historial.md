@@ -22,3 +22,4 @@ Empeze a programar la navegación entre pantallas, termite las pantallas de logi
 
 ### Dia 6 (19/03/2023)
 
+Empecé a trabajar con el menú desplegable, el cual estuvo dándome problemas y no he terminado de solucionar. Tambien cambie el color primario de la aplicacion ha negro y el color de los iconos a blanco.
