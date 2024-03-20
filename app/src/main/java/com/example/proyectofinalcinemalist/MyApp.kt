@@ -1,17 +1,20 @@
 package com.example.proyectofinalcinemalist
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -24,6 +27,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,6 +36,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -39,7 +44,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 
 
-enum class Pantallas(){
+enum class Pantallas{
     Login,
     Register,
     Principal,
@@ -63,46 +68,19 @@ fun MyApp(
                 TopBarCinemalist()
             }
         },
+        floatingActionButton = {
+            FloatingActionButton(onClick = { /*TODO*/ }) {
+                Icon(Icons.Filled.Add, "Añadir lista")
+            }
+        }
     ) {
-            innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = Pantallas.Login.name,
+        innerPadding ->
+        Box(
             modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
                 .padding(innerPadding)
-        ){
-            composable(Pantallas.Login.name){
-                showTopBar = false
-                Login(
-                    goToPrincipal = {
-                        navController.navigate(Pantallas.Principal.name)
-                    },
-                    goToRegister = {
-                        navController.navigate(Pantallas.Register.name)
-                    }
-                )
-            }
-            composable(Pantallas.Register.name){
-                showTopBar = false
-                Register(
-                    goToPrincipal = {
-                        navController.navigate(Pantallas.Principal.name)
-                    }
-                )
-            }
-            composable(Pantallas.Principal.name){
-                showTopBar = true
-                Principal(
-                    goToFicha = {
-                        navController.navigate(Pantallas.Ficha.name)
-                    },
-                    goToPerfil = {
-                        navController.navigate(Pantallas.Perfil.name)
-                    }
-                )
-            }
+                .fillMaxSize()
+        ) {
+           // Navegacion(navController = navController, showTopBar = showTopBar)
         }
     }
 }
@@ -174,3 +152,48 @@ fun NavigationDrawer(){
         }
     }
 }
+//
+//@Composable
+//fun Navegacion(navController: NavHostController, showTopBar: Boolean, ){
+//    NavHost(
+//        navController = navController,
+//        startDestination = Pantallas.Login.name,
+//        modifier = Modifier
+//            .fillMaxSize()
+//            .verticalScroll(rememberScrollState())
+//    ){
+//        composable(Pantallas.Login.name){
+//            showTopBar = false
+//            Login(
+//                goToPrincipal = {
+//                    navController.navigate(Pantallas.Principal.name)
+//                },
+//                goToRegister = {
+//                    navController.navigate(Pantallas.Register.name)
+//                }
+//            )
+//        }
+//        composable(Pantallas.Register.name){
+//            showTopBar = false
+//            Register(
+//                goToPrincipal = {
+//                    navController.navigate(Pantallas.Principal.name)
+//                }
+//            )
+//        }
+//        composable(Pantallas.Principal.name){
+//            showTopBar = true
+//            Principal(
+//                goToFicha = {
+//                    navController.navigate(Pantallas.Ficha.name)
+//                },
+//                goToPerfil = {
+//                    navController.navigate(Pantallas.Perfil.name)
+//                },
+//                goToListas = {
+//                    navController.navigate(Pantallas.Listas.name)
+//                }
+//            )
+//        }
+//    }
+//}

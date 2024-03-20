@@ -7,7 +7,8 @@ import androidx.compose.runtime.Composable
 @Composable
 fun Principal(
     goToFicha: () -> Unit,
-    goToPerfil: () -> Unit
+    goToPerfil: () -> Unit,
+    goToListas: () -> Unit
 ){
         Column() {
             Text(text = "principal")
