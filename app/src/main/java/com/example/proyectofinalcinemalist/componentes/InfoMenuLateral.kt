@@ -1,7 +1,6 @@
-package com.example.proyectofinalcinemalist
+package com.example.proyectofinalcinemalist.componentes
 
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
+import com.example.proyectofinalcinemalist.Pantallas
 
 sealed class InfoMenuLateral(val nombre: String, val ruta: String){
     object InfoMenuLateral1: InfoMenuLateral(
