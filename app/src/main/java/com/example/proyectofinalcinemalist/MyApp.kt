@@ -123,63 +123,6 @@ fun Contenido(
     }
 }
 
-
-
-
-
-
-
-
-
 @Composable
 fun currentRoute(navController: NavHostController): String? =
     navController.currentBackStackEntryAsState().value?.destination?.route
-
-
-
-
-
-//@Composable
-//fun Navegacion(navController: NavHostController, showTopBar: Boolean, ){
-//    NavHost(
-//        navController = navController,
-//        startDestination = Pantallas.Login.name,
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .verticalScroll(rememberScrollState())
-//    ){
-//        composable(Pantallas.Login.name){
-//            showTopBar = false
-//            Login(
-//                goToPrincipal = {
-//                    navController.navigate(Pantallas.Principal.name)
-//                },
-//                goToRegister = {
-//                    navController.navigate(Pantallas.Register.name)
-//                }
-//            )
-//        }
-//        composable(Pantallas.Register.name){
-//            showTopBar = false
-//            Register(
-//                goToPrincipal = {
-//                    navController.navigate(Pantallas.Principal.name)
-//                }
-//            )
-//        }
-//        composable(Pantallas.Principal.name){
-//            showTopBar = true
-//            Principal(
-//                goToFicha = {
-//                    navController.navigate(Pantallas.Ficha.name)
-//                },
-//                goToPerfil = {
-//                    navController.navigate(Pantallas.Perfil.name)
-//                },
-//                goToListas = {
-//                    navController.navigate(Pantallas.Listas.name)
-//                }
-//            )
-//        }
-//    }
-//}
