@@ -1,5 +1,6 @@
 package com.example.proyectofinalcinemalist
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -40,9 +42,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-
+import com.example.proyectofinalcinemalist.InfoMenuLateral.*
+import com.example.proyectofinalcinemalist.componentes.MenuLateral
+import com.example.proyectofinalcinemalist.componentes.TopBarCinemalist
 
 enum class Pantallas{
     Login,
@@ -52,20 +57,32 @@ enum class Pantallas{
     Listas,
     Perfil
 }
+
 @Composable
-fun MyApp(
-    navController: NavHostController = rememberNavController()
+fun MyApp(){
+ val navController = rememberNavController()
+ val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    MenuLateral(
+        navController = navController,
+        drawerState = drawerState
+    ){
+        Contenido(navController = navController, drawerState = drawerState)
+    }
+
+}
+
+
+@Composable
+fun Contenido(
+    navController: NavHostController,
+    drawerState: DrawerState
 ){
     var showTopBar by remember { mutableStateOf(false) }
-    ModalNavigationDrawer(
-        drawerContent = { NavigationDrawer() }
-    ){
 
-    }
     Scaffold(
         topBar = {
             if (showTopBar) {
-                TopBarCinemalist()
+                TopBarCinemalist(drawerState)
             }
         },
         floatingActionButton = {
@@ -74,85 +91,76 @@ fun MyApp(
             }
         }
     ) {
-        innerPadding ->
+            innerPadding ->
         Box(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
         ) {
-           // Navegacion(navController = navController, showTopBar = showTopBar)
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopBarCinemalist(){
-    val botones = listOf("Buscador", "Perfil", "Inicio", "Listas", "Cerrar seción")
-    val scope = rememberCoroutineScope()
-    val estadoDrawer = rememberDrawerState(DrawerValue.Closed)
-    val botonSeleccionado = remember { mutableStateOf(botones[0])}
-
-    ModalDrawerSheet {
-        botones.forEach{ boton ->
-            NavigationDrawerItem(
-                label = { Text(text = boton) },
-                selected = boton.equals(botonSeleccionado),
-                onClick = {
-                scope.launch { estadoDrawer.close() }
-                botonSeleccionado.value = boton
+            NavHost(
+                navController = navController,
+                startDestination = Pantallas.Login.name,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ){
+                composable(Pantallas.Login.name){
+                    showTopBar = false
+                    Login(
+                        goToPrincipal = {
+                            navController.navigate(Pantallas.Principal.name)
+                        },
+                        goToRegister = {
+                            navController.navigate(Pantallas.Register.name)
+                        }
+                    )
                 }
-            )
-        }
-    }
-    CenterAlignedTopAppBar(
-        title = { Image(painter = painterResource(id = R.drawable.logocinemalistblanco), contentDescription ="logo" ) },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
-        ),
-        navigationIcon = {
-            IconButton(onClick = { scope.launch { estadoDrawer.open() } }) {
-                Icon(
-                    imageVector = Icons.Filled.Menu,
-                    contentDescription = "menu",
-                    tint = Color.White
-                )
-            }
-        },
-        actions = {
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(
-                    imageVector = Icons.Filled.Search,
-                    contentDescription = "busqueda",
-                    tint = Color.White
-                )
+                composable(Pantallas.Register.name){
+                    showTopBar = false
+                    Register(
+                        goToPrincipal = {
+                            navController.navigate(Pantallas.Principal.name)
+                        }
+                    )
+                }
+                composable(Pantallas.Principal.name){
+                    showTopBar = true
+                    Principal(
+                        goToFicha = {
+                            navController.navigate(Pantallas.Ficha.name)
+                        },
+                        goToPerfil = {
+                            navController.navigate(Pantallas.Perfil.name)
+                        },
+                        goToListas = {
+                            navController.navigate(Pantallas.Listas.name)
+                        }
+                    )
+                }
+                composable(Pantallas.Perfil.name){
+                    Perfil()
+                }
             }
         }
-    )
-}
-
-@Composable
-fun NavigationDrawer(){
-    val botones = listOf("Buscador", "Perfil", "Inicio", "Listas", "Cerrar seción")
-    val scope = rememberCoroutineScope()
-    val estadoDrawer = rememberDrawerState(DrawerValue.Closed)
-    val botonSeleccionado = remember { mutableStateOf(botones[0])}
-
-    ModalDrawerSheet {
-        botones.forEach{ boton ->
-            NavigationDrawerItem(
-                label = { Text(text = boton) },
-                selected = boton.equals(botonSeleccionado),
-                onClick = {
-                    scope.launch { estadoDrawer.close() }
-                    botonSeleccionado.value = boton
-                }
-            )
-        }
     }
 }
-//
+
+
+
+
+
+
+
+
+
+@Composable
+fun currentRoute(navController: NavHostController): String? =
+    navController.currentBackStackEntryAsState().value?.destination?.route
+
+
+
+
+
 //@Composable
 //fun Navegacion(navController: NavHostController, showTopBar: Boolean, ){
 //    NavHost(
