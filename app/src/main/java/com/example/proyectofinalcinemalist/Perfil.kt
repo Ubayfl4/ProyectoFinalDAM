@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,7 +52,7 @@ fun Perfil(){
             fontSize = 30.sp,
             fontWeight = FontWeight.ExtraBold
         )
-        Row {
+        LazyRow(modifier = Modifier.fillMaxSize()) {
 
         }
         Text(
@@ -57,7 +60,7 @@ fun Perfil(){
             fontSize = 30.sp,
             fontWeight = FontWeight.ExtraBold
         )
-        Row {
+        LazyRow(modifier = Modifier.fillMaxSize()) {
 
         }
         Text(
@@ -65,8 +68,8 @@ fun Perfil(){
             fontSize = 30.sp,
             fontWeight = FontWeight.ExtraBold
         )
-        Row {
-
+        LazyRow(modifier = Modifier.fillMaxSize()) {
+            //items()
         }
     }
 }

@@ -56,6 +56,7 @@ fun Contenido(
     drawerState: DrawerState
 ){
     var showTopBar by remember { mutableStateOf(false) }
+    var showFloatingButon by remember { mutableStateOf(false)}
 
     Scaffold(
         topBar = {
@@ -64,8 +65,10 @@ fun Contenido(
             }
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
-                Icon(Icons.Filled.Add, "Añadir lista")
+            if(showFloatingButon){
+                FloatingActionButton(onClick = { /*TODO*/ }) {
+                    Icon(Icons.Filled.Add, "Añadir lista")
+                }
             }
         }
     ) {
@@ -116,7 +119,13 @@ fun Contenido(
                     )
                 }
                 composable(Pantallas.Perfil.name){
+                    showTopBar = true
                     Perfil()
+                }
+                composable(Pantallas.Listas.name){
+                    showTopBar = true
+                    showFloatingButon = true
+                    Listas()
                 }
             }
         }
