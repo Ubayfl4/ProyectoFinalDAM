@@ -27,6 +27,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectofinalcinemalist.componentes.MenuLateral
 import com.example.proyectofinalcinemalist.componentes.TopBarCinemalist
+import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 import com.example.proyectofinalcinemalist.views.Listas
 import com.example.proyectofinalcinemalist.views.Login
 import com.example.proyectofinalcinemalist.views.Perfil
@@ -44,14 +45,14 @@ enum class Pantallas{
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
-fun MyApp(){
+fun MyApp(viewModel: PeliculasViewModel){
  val navController = rememberNavController()
  val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     MenuLateral(
         navController = navController,
         drawerState = drawerState
     ){
-        Contenido(navController = navController, drawerState = drawerState)
+        Contenido(navController = navController, drawerState = drawerState, viewModel)
     }
 
 }
@@ -60,7 +61,8 @@ fun MyApp(){
 @Composable
 fun Contenido(
     navController: NavHostController,
-    drawerState: DrawerState
+    drawerState: DrawerState,
+    viewModel: PeliculasViewModel
 ){
     var showTopBar by remember { mutableStateOf(false) }
     var showFloatingButon by remember { mutableStateOf(false)}
@@ -113,17 +115,7 @@ fun Contenido(
                 }
                 composable(Pantallas.Principal.name){
                     showTopBar = true
-                    Principal(
-                        goToFicha = {
-                            navController.navigate(Pantallas.Ficha.name)
-                        },
-                        goToPerfil = {
-                            navController.navigate(Pantallas.Perfil.name)
-                        },
-                        goToListas = {
-                            navController.navigate(Pantallas.Listas.name)
-                        }
-                    )
+                    Principal(viewModel)
                 }
                 composable(Pantallas.Perfil.name){
                     showTopBar = true

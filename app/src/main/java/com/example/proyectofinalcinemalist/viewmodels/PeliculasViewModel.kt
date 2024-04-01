@@ -8,13 +8,15 @@ import com.example.proyectofinalcinemalist.core.Constantes
 import com.example.proyectofinalcinemalist.models.PeliculaModel
 import com.example.proyectofinalcinemalist.network.RetrofitClient
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PeliculasViewModel: ViewModel() {
 
-    private var _listaPeliculas = MutableLiveData<List<PeliculaModel>>()
-    val listaPeliculas: LiveData<List<PeliculaModel>> = _listaPeliculas
+    private var _listaPeliculas = MutableStateFlow<List<PeliculaModel>>(emptyList())
+    val listaPeliculas = _listaPeliculas.asStateFlow()
 
     init {
         obtenerCartelera()

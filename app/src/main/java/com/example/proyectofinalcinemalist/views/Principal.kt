@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -15,22 +17,19 @@ import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 
 @Composable
 fun Principal(
-    goToFicha: () -> Unit,
-    goToPerfil: () -> Unit,
-    goToListas: () -> Unit,
     viewModel: PeliculasViewModel
 ){
-    val peliculas by viewModel.listaPeliculas.
+    val peliculas by viewModel.listaPeliculas.collectAsState()
 
-        Column() {
-            Text(
-                text = "Peliculas",
-                fontSize = 30.sp,
-                fontWeight = FontWeight.ExtraBold,
-                modifier = Modifier.padding(10.dp)
-            )
-            LazyRow(modifier = Modifier.fillMaxSize()){
+    Column() {
+        Text(
+            text = "Peliculas",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.padding(10.dp)
+        )
+        LazyRow(modifier = Modifier.fillMaxSize()){
 
-            }
         }
+    }
 }
