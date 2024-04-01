@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import com.example.proyectofinalcinemalist.models.PeliculaModel
 
@@ -35,8 +36,8 @@ fun CardPelicula(
 }
 
 @Composable
-fun InicioImagen(imagen: String){
-    val imagen = rememberImagePainter(data = imagen)
+fun InicioImagen(imagen: String) {
+    val imagen = rememberAsyncImagePainter(model = imagen)
 
     Image(
         painter = imagen,

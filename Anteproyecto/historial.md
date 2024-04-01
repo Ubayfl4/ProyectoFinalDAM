@@ -44,3 +44,9 @@ Busque información sobre unos problemas que tenia con el nav host y el menu des
 - Refactorize un poco todos los archivos que tenia
 
 ### Dia 10 (01/04/2023)
+
+Hoy he terminado de implementar la API con retrofit, ademas de añadir nombres de peliculas a la pantalla principal
+- Cree clase PeliculasResponse
+- Cree CardPelicula
+- CreeWebServise
+- Cree RetrofitClient
