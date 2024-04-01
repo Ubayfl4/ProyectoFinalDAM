@@ -1,7 +1,6 @@
-package com.example.proyectofinalcinemalist
+package com.example.proyectofinalcinemalist.views
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,14 +26,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import com.example.proyectofinalcinemalist.R
 
 @Composable
-fun Login(
-    goToPrincipal: () -> Unit,
-    goToRegister: () -> Unit
-){
+fun Register(goToPrincipal: () -> Unit){
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -44,7 +40,16 @@ fun Login(
             painter = painterResource(id = R.drawable.logocinemalist),
             contentDescription = "Logo"
         )
-        val email = remember { mutableStateOf("")}
+        val usuario = remember { mutableStateOf("") }
+        OutlinedTextField(
+            value = usuario.value,
+            singleLine = true,
+            onValueChange = {usuario.value = it},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            label = { Text(text = "Usuario")},
+            modifier = Modifier.padding(bottom = 20.dp)
+        )
+        val email = remember { mutableStateOf("") }
         OutlinedTextField(
             value = email.value,
             singleLine = true,
@@ -53,7 +58,15 @@ fun Login(
             label = { Text(text = "Email")},
             modifier = Modifier.padding(bottom = 20.dp)
         )
-        val password = remember { mutableStateOf("")}
+        OutlinedTextField(
+            value = email.value,
+            singleLine = true,
+            onValueChange = {email.value = it},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            label = { Text(text = "Confirmar Email")},
+            modifier = Modifier.padding(bottom = 20.dp)
+        )
+        val password = remember { mutableStateOf("") }
         var passwordVisible by rememberSaveable { mutableStateOf(false) }
         OutlinedTextField(
             value = password.value,
@@ -68,6 +81,22 @@ fun Login(
                 IconButton(onClick = {passwordVisible = !passwordVisible}){
                     Icon(imageVector  = image, description)
                 }
+            },
+            modifier = Modifier.padding(bottom = 20.dp)
+        )
+        OutlinedTextField(
+            value = password.value,
+            singleLine = true,
+            onValueChange = {password.value = it},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+            label = { Text(text = "Confirmar contraseña") },
+            trailingIcon = {
+                val image = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                val description = if (passwordVisible) "Hide password" else "Show password"
+                IconButton(onClick = {passwordVisible = !passwordVisible}){
+                    Icon(imageVector  = image, description)
+                }
             }
         )
         Button(
@@ -76,10 +105,5 @@ fun Login(
         ) {
             Text(text = "Confirmar")
         }
-        Text(
-            text = "No tengo cuenta",
-            textDecoration = TextDecoration.Underline,
-            modifier = Modifier.clickable { goToRegister() }
-        )
     }
 }

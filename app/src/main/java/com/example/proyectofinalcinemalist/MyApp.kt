@@ -26,6 +26,11 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectofinalcinemalist.componentes.MenuLateral
 import com.example.proyectofinalcinemalist.componentes.TopBarCinemalist
+import com.example.proyectofinalcinemalist.views.Listas
+import com.example.proyectofinalcinemalist.views.Login
+import com.example.proyectofinalcinemalist.views.Perfil
+import com.example.proyectofinalcinemalist.views.Principal
+import com.example.proyectofinalcinemalist.views.Register
 
 enum class Pantallas{
     Login,
