@@ -50,7 +50,7 @@ fun MyApp(viewModel: PeliculasViewModel){
  val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     MenuLateral(
         navController = navController,
-        drawerState = drawerState
+        drawerState = drawerState,
     ){
         Contenido(navController = navController, drawerState = drawerState, viewModel)
     }

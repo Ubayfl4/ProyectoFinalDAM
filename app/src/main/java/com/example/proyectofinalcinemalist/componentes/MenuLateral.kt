@@ -12,13 +12,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import com.example.proyectofinalcinemalist.Contenido
 import com.example.proyectofinalcinemalist.currentRoute
+import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun MenuLateral(
     navController: NavHostController,
     drawerState: DrawerState,
-    contenido: @Composable () -> Unit
+    contenido: @Composable () -> Unit,
 ){
     val botones = listOf(
         InfoMenuLateral.InfoMenuLateral1,
@@ -46,6 +47,6 @@ fun MenuLateral(
             }
         }
     ) {
-        Contenido(navController, drawerState)
+        Contenido(navController, drawerState, viewModel = PeliculasViewModel())
     }
 }
