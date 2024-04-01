@@ -1,5 +1,6 @@
 package com.example.proyectofinalcinemalist
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -41,6 +42,7 @@ enum class Pantallas{
     Perfil
 }
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun MyApp(){
  val navController = rememberNavController()
