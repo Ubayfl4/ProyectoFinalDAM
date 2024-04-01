@@ -31,9 +31,16 @@ Empecé a trabajar con el menú desplegable, el cual estuvo dándome problemas y
 - Creación de la pantalla de perfil, la pantalla de listas, un archivo para el menú desplegable.
 - Edite el AndroidManifest.xml añadiendo el "uses-permission"
 
-### DIa 8 (24/03/2023)
+### Dia 8 (24/03/2023)
 
 Busque información sobre unos problemas que tenia con el nav host y el menu desplegable, posteriormente termine:
 - Cree paquete componentes y añadi la clase InfoMenuDesplegable, que es donde se guarda la informacion del menu desplegable, MenuLateral y TopBarCinemalist
 - Cree la función contenido a la cual movi el scafold que estba en la función MyApp
 - Refactorize el archivo MyApp para facilitarme la modularidad del topbar y el menú
+
+### Dia 9 (30/03/2023)
+
+- Cree carpeta "views" donde meti todas las pantallas
+- Refactorize un poco todos los archivos que tenia
+
+### Dia 10 (01/04/2023)
