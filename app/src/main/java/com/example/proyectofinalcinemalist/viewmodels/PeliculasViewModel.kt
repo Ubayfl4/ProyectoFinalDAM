@@ -25,6 +25,15 @@ class PeliculasViewModel: ViewModel() {
     init {
         obtenerPopulares()
     }
+
+    init {
+        obtenerTopPuntuacion()
+    }
+
+    init {
+        obtenerUpcoming()
+    }
+
     fun obtenerCartelera(){
         viewModelScope.launch(Dispatchers.IO){
             val response = RetrofitClient.webService.obtenerCartelera(Constantes.API_KEY)
@@ -37,6 +46,24 @@ class PeliculasViewModel: ViewModel() {
     fun obtenerPopulares(){
         viewModelScope.launch(Dispatchers.IO){
             val response = RetrofitClient.webService.obtenerPopulares(Constantes.API_KEY)
+            withContext(Dispatchers.Main){
+                _listaPeliculas.value = response.body()!!.resultados.sortedByDescending { it.votoPromedio }
+            }
+        }
+    }
+
+    fun obtenerTopPuntuacion(){
+        viewModelScope.launch(Dispatchers.IO){
+            val response = RetrofitClient.webService.obtenerTopPuntuacion(Constantes.API_KEY)
+            withContext(Dispatchers.Main){
+                _listaPeliculas.value = response.body()!!.resultados.sortedByDescending { it.votoPromedio }
+            }
+        }
+    }
+
+    fun obtenerUpcoming(){
+        viewModelScope.launch(Dispatchers.IO){
+            val response = RetrofitClient.webService.obtenerUpcoming(Constantes.API_KEY)
             withContext(Dispatchers.Main){
                 _listaPeliculas.value = response.body()!!.resultados.sortedByDescending { it.votoPromedio }
             }

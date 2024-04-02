@@ -15,4 +15,14 @@ interface WebService {
     suspend fun obtenerPopulares(
         @Query("api_key") apikey: String
     ): Response<PeliculasResponse>
+
+    @GET("top_rated")
+    suspend fun obtenerTopPuntuacion(
+        @Query("api_key") apikey: String
+    ): Response<PeliculasResponse>
+
+    @GET("upcoming")
+    suspend fun obtenerUpcoming(
+        @Query("api_key") apikey: String
+    ): Response<PeliculasResponse>
 }

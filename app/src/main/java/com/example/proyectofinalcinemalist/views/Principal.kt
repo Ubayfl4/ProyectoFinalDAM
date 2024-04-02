@@ -20,7 +20,8 @@ import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 
 @Composable
 fun Principal(
-    viewModel: PeliculasViewModel
+    viewModel: PeliculasViewModel,
+    goToFicha: () -> Unit
 ){
     val peliculas by viewModel.listaPeliculas.collectAsState()
 
@@ -35,6 +36,39 @@ fun Principal(
             items(peliculas){
                 CardPelicula(onClick = { /*TODO*/ }, pelicula = it)
                 Text(text = it.nombrePelicula)
+            }
+        }
+        Text(
+            text = "Populares",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.padding(10.dp)
+        )
+        LazyRow(modifier = Modifier.fillMaxSize()){
+            items(peliculas){
+                CardPelicula(onClick = { /*TODO*/ }, pelicula = it)
+            }
+        }
+        Text(
+            text = "Con mas puntuación",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.padding(10.dp)
+        )
+        LazyRow(modifier = Modifier.fillMaxSize()){
+            items(peliculas){
+                CardPelicula(onClick = { goToFicha() }, pelicula = it)
+            }
+        }
+        Text(
+            text = "Proximamente",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.padding(10.dp)
+        )
+        LazyRow(modifier = Modifier.fillMaxSize()){
+            items(peliculas){
+                CardPelicula(onClick = { /*TODO*/ }, pelicula = it)
             }
         }
     }

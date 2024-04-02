@@ -28,6 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.proyectofinalcinemalist.componentes.MenuLateral
 import com.example.proyectofinalcinemalist.componentes.TopBarCinemalist
 import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
+import com.example.proyectofinalcinemalist.views.Ficha
 import com.example.proyectofinalcinemalist.views.Listas
 import com.example.proyectofinalcinemalist.views.Login
 import com.example.proyectofinalcinemalist.views.Perfil
@@ -115,7 +116,12 @@ fun Contenido(
                 }
                 composable(Pantallas.Principal.name){
                     showTopBar = true
-                    Principal(viewModel)
+                    Principal(
+                        viewModel,
+                        goToFicha = {
+                            navController.navigate(Pantallas.Ficha.name)
+                        }
+                        )
                 }
                 composable(Pantallas.Perfil.name){
                     showTopBar = true
@@ -125,6 +131,10 @@ fun Contenido(
                     showTopBar = true
                     showFloatingButon = true
                     Listas()
+                }
+                composable(Pantallas.Ficha.name){
+                    showTopBar = true
+                    Ficha()
                 }
             }
         }

@@ -51,21 +51,5 @@ fun Perfil(){
         LazyRow(modifier = Modifier.fillMaxSize()) {
 
         }
-        Text(
-            text = "Ultimas peliculas vistas",
-            fontSize = 30.sp,
-            fontWeight = FontWeight.ExtraBold
-        )
-        LazyRow(modifier = Modifier.fillMaxSize()) {
-
-        }
-        Text(
-            text = "Ultimas series vistas",
-            fontSize = 30.sp,
-            fontWeight = FontWeight.ExtraBold
-        )
-        LazyRow(modifier = Modifier.fillMaxSize()) {
-            //items()
-        }
     }
 }
