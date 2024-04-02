@@ -15,29 +15,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.proyectofinalcinemalist.componentes.CardPelicula
+import com.example.proyectofinalcinemalist.models.PeliculaModel
 import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 
 
 @Composable
 fun Principal(
     viewModel: PeliculasViewModel,
-    goToFicha: () -> Unit
+    goToFicha: () -> Unit,
 ){
     val peliculas by viewModel.listaPeliculas.collectAsState()
 
-    Column() {
-        Text(
-            text = "Peliculas",
-            fontSize = 30.sp,
-            fontWeight = FontWeight.ExtraBold,
-            modifier = Modifier.padding(10.dp)
-        )
-        LazyRow(modifier = Modifier.fillMaxSize()){
-            items(peliculas){
-                CardPelicula(onClick = { /*TODO*/ }, pelicula = it)
-                Text(text = it.nombrePelicula)
-            }
-        }
+    Column {
         Text(
             text = "Populares",
             fontSize = 30.sp,
@@ -46,7 +35,18 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { /*TODO*/ }, pelicula = it)
+                CardPelicula(onClick = { goToFicha() }, pelicula = it)
+            }
+        }
+        Text(
+            text = "Cartelera",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.padding(10.dp)
+        )
+        LazyRow(modifier = Modifier.fillMaxSize()){
+            items(peliculas){
+                CardPelicula(onClick = { goToFicha() }, pelicula = it)
             }
         }
         Text(
@@ -68,7 +68,7 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { /*TODO*/ }, pelicula = it)
+                CardPelicula(onClick = { goToFicha() }, pelicula = it)
             }
         }
     }
