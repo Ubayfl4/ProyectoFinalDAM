@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,12 +22,13 @@ import com.example.proyectofinalcinemalist.core.Constantes
 import com.example.proyectofinalcinemalist.models.PeliculaModel
 
 @Composable
+//datos: PeliculaModel
 fun Ficha(){
     Column(
         modifier = Modifier.padding(10.dp)
     ) {
         Text(
-            text = "nobre pelicula",
+            text = "ggg",
             fontSize = 20.sp,
             fontWeight = FontWeight.ExtraBold
         )
@@ -71,5 +73,8 @@ fun Ficha(){
                 bottom = 10.dp
             )
         )
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Añadir pelicula a favoritos")
+        }
     }
 }

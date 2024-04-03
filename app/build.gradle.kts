@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    id("kotlin-kapt")
 }
 
 android {
@@ -80,10 +82,12 @@ dependencies {
     //Coil
     implementation("io.coil-kt:coil:2.6.0")
     implementation("io.coil-kt:coil-compose:2.6.0")
-    //CircularProgressIndicator
-    //implementation("com.github.antonKozyriatskyi:CircularProgressIndicator:1.3.0")
 
-    //f
+    //Room
+//    val room_version: String = "2.5.1"
+//    implementation("androidx.room:room-compiler:$room_version")
+//    kapt("androidx.room:room-compiler:$room_version")
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

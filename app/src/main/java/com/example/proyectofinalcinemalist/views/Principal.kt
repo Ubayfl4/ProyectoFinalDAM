@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.proyectofinalcinemalist.componentes.CardPelicula
 import com.example.proyectofinalcinemalist.models.PeliculaModel
+import com.example.proyectofinalcinemalist.network.response.PeliculasResponse
 import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 
 
@@ -25,6 +26,7 @@ fun Principal(
     goToFicha: () -> Unit,
 ){
     val peliculas by viewModel.listaPeliculas.collectAsState()
+    //val peliculas2 by viewModel.obtenerCartelera()
 
     Column {
         Text(
@@ -61,7 +63,7 @@ fun Principal(
             }
         }
         Text(
-            text = "Proximamente",
+            text = "Próximamente",
             fontSize = 30.sp,
             fontWeight = FontWeight.ExtraBold,
             modifier = Modifier.padding(10.dp)
@@ -70,6 +72,9 @@ fun Principal(
             items(peliculas){
                 CardPelicula(onClick = { goToFicha() }, pelicula = it)
             }
+        }
+        LazyRow(modifier = Modifier.fillMaxSize()){
+
         }
     }
 }

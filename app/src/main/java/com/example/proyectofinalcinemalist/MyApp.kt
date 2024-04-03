@@ -27,6 +27,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectofinalcinemalist.componentes.MenuLateral
 import com.example.proyectofinalcinemalist.componentes.TopBarCinemalist
+import com.example.proyectofinalcinemalist.models.PeliculaModel
 import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 import com.example.proyectofinalcinemalist.views.Ficha
 import com.example.proyectofinalcinemalist.views.Listas
