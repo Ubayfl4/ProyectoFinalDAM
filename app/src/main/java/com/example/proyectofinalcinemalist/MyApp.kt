@@ -132,7 +132,6 @@ fun Contenido(
                 }
                 composable(Pantallas.Listas.name){
                     showTopBar = true
-                    showFloatingButon = true
                     Listas()
                 }
                 composable(Pantallas.Ficha.name,){

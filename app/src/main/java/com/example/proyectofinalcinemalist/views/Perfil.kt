@@ -3,9 +3,11 @@ package com.example.proyectofinalcinemalist.views
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +28,6 @@ fun Perfil(){
             .fillMaxSize()
             .padding(10.dp)
     ) {
-        Text(text = "perfil")
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -48,8 +49,12 @@ fun Perfil(){
             fontSize = 30.sp,
             fontWeight = FontWeight.ExtraBold
         )
-        LazyRow(modifier = Modifier.fillMaxSize()) {
-
+        Row(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.godzilla),
+                contentDescription = "pelicula",
+                modifier = Modifier.size(200.dp)
+            )
         }
     }
 }

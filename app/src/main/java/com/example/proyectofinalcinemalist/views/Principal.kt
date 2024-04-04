@@ -10,6 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -26,7 +29,7 @@ fun Principal(
     goToFicha: (PeliculaModel) -> Unit,
 ){
     val peliculas by viewModel.listaPeliculas.collectAsState()
-    //val peliculas2 by viewModel.obtenerCartelera()
+    var stateCard by remember{ mutableStateOf(false) }
 
     Column {
         Text(
@@ -37,7 +40,7 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { goToFicha(it) }, pelicula = it)
+                CardPelicula(onClick = { !stateCard }, pelicula = it, )
             }
         }
         Text(
@@ -48,7 +51,7 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { goToFicha(it) }, pelicula = it)
+                CardPelicula(onClick = { goToFicha(it) }, pelicula = it, )
             }
         }
         Text(
@@ -59,7 +62,7 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { goToFicha(it) }, pelicula = it)
+                CardPelicula(onClick = { goToFicha(it) }, pelicula = it, )
             }
         }
         Text(
@@ -70,7 +73,7 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { goToFicha(it) }, pelicula = it)
+                CardPelicula(onClick = { goToFicha(it) }, pelicula = it, )
             }
         }
         LazyRow(modifier = Modifier.fillMaxSize()){

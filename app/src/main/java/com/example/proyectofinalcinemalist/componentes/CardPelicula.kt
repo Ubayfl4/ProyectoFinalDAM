@@ -2,7 +2,9 @@ package com.example.proyectofinalcinemalist.componentes
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,6 +18,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.compose.rememberImagePainter
@@ -25,17 +28,29 @@ import com.example.proyectofinalcinemalist.models.PeliculaModel
 @Composable
 fun CardPelicula(
     onClick: () -> Unit,
-    pelicula: PeliculaModel
+    pelicula: PeliculaModel,
 ){
-    Card(
-        shape = RoundedCornerShape(4.dp),
-        modifier = Modifier
-            .padding(8.dp)
-            .clickable { onClick() }
-    ) {
-        Column {
-            InicioImagen(imagen = pelicula.poster)
-            Text(text = pelicula.id)
+    Column {
+        Card(
+            shape = RoundedCornerShape(4.dp),
+            modifier = Modifier
+                .padding(8.dp)
+                .clickable { onClick() }
+        ) {
+            Row {
+                Column {
+                    InicioImagen(imagen = pelicula.poster)
+                }
+//                Column(modifier = Modifier.padding(10.dp)) {
+//                    Text(
+//                        text = pelicula.nombrePelicula,
+//                        fontWeight = FontWeight.ExtraBold
+//                    )
+//                    Text(text = pelicula.fechaLanzamiento)
+//                    Text(text = "Nota: ${pelicula.votoPromedio}")
+//                    Text(text = "Nº votos: ${pelicula.totalVotos}")
+//                }
+            }
         }
     }
 }
