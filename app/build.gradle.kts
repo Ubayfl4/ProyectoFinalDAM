@@ -89,6 +89,11 @@ dependencies {
 //    kapt("androidx.room:room-compiler:$room_version")
 //    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.45")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    kapt("com.google.dagger:hilt-compiler:2.45")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

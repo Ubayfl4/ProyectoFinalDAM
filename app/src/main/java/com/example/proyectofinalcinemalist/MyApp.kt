@@ -21,10 +21,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.proyectofinalcinemalist.componentes.MenuLateral
 import com.example.proyectofinalcinemalist.componentes.TopBarCinemalist
 import com.example.proyectofinalcinemalist.models.PeliculaModel
@@ -133,9 +135,10 @@ fun Contenido(
                     showFloatingButon = true
                     Listas()
                 }
-                composable(Pantallas.Ficha.name){
+                composable(Pantallas.Ficha.name,){
                     showTopBar = true
                     Ficha()
+
                 }
             }
         }

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.proyectofinalcinemalist.core.Constantes
 import com.example.proyectofinalcinemalist.models.PeliculaModel
 import com.example.proyectofinalcinemalist.network.RetrofitClient
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,6 +18,12 @@ class PeliculasViewModel: ViewModel() {
 
     private var _listaPeliculas = MutableStateFlow<List<PeliculaModel>>(emptyList())
     val listaPeliculas = _listaPeliculas.asStateFlow()
+
+
+    fun obtenerPeliculaPorId(peliculaId: Int): PeliculaModel? {
+        // Busca la película en la lista de películas basándote en el ID
+        return _listaPeliculas.value.find { it.id == peliculaId.toString() }
+    }
 
     init {
         obtenerCartelera()

@@ -17,9 +17,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.proyectofinalcinemalist.core.Constantes
 import com.example.proyectofinalcinemalist.models.PeliculaModel
+import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 
 @Composable
 //datos: PeliculaModel
@@ -28,7 +34,7 @@ fun Ficha(){
         modifier = Modifier.padding(10.dp)
     ) {
         Text(
-            text = "ggg",
+            text = "datos.nombrePelicula",
             fontSize = 20.sp,
             fontWeight = FontWeight.ExtraBold
         )

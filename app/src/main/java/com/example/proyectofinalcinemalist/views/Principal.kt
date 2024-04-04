@@ -23,7 +23,7 @@ import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 @Composable
 fun Principal(
     viewModel: PeliculasViewModel,
-    goToFicha: () -> Unit,
+    goToFicha: (PeliculaModel) -> Unit,
 ){
     val peliculas by viewModel.listaPeliculas.collectAsState()
     //val peliculas2 by viewModel.obtenerCartelera()
@@ -37,7 +37,7 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { goToFicha() }, pelicula = it)
+                CardPelicula(onClick = { goToFicha(it) }, pelicula = it)
             }
         }
         Text(
@@ -48,7 +48,7 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { goToFicha() }, pelicula = it)
+                CardPelicula(onClick = { goToFicha(it) }, pelicula = it)
             }
         }
         Text(
@@ -59,7 +59,7 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { goToFicha() }, pelicula = it)
+                CardPelicula(onClick = { goToFicha(it) }, pelicula = it)
             }
         }
         Text(
@@ -70,7 +70,7 @@ fun Principal(
         )
         LazyRow(modifier = Modifier.fillMaxSize()){
             items(peliculas){
-                CardPelicula(onClick = { goToFicha() }, pelicula = it)
+                CardPelicula(onClick = { goToFicha(it) }, pelicula = it)
             }
         }
         LazyRow(modifier = Modifier.fillMaxSize()){
