@@ -54,7 +54,7 @@ class PeliculasViewModel: ViewModel() {
         viewModelScope.launch(Dispatchers.IO){
             val response = RetrofitClient.webService.obtenerPopulares(Constantes.API_KEY)
             withContext(Dispatchers.Main){
-                _listaPeliculas.value = response.body()!!.resultados.sortedByDescending { it.votoPromedio }
+                _listaPeliculas.value = response.body()!!.resultados.sortedByDescending { it.totalVotos }
             }
         }
     }
@@ -72,7 +72,7 @@ class PeliculasViewModel: ViewModel() {
         viewModelScope.launch(Dispatchers.IO){
             val response = RetrofitClient.webService.obtenerUpcoming(Constantes.API_KEY)
             withContext(Dispatchers.Main){
-                _listaPeliculas.value = response.body()!!.resultados.sortedByDescending { it.votoPromedio }
+                _listaPeliculas.value = response.body()!!.resultados.sortedByDescending { it.fechaLanzamiento }
             }
         }
     }
