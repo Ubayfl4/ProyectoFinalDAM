@@ -29,7 +29,7 @@ fun Principal(
     goToFicha: (PeliculaModel) -> Unit,
 ){
     val peliculas by viewModel.listaPeliculas.collectAsState()
-    val populares by viewModel.obtenerPopulares()
+    //val populares by viewModel.obtenerPopulares()
     var stateCard by remember{ mutableStateOf(false) }
 
     Column {

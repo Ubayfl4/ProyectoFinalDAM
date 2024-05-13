@@ -58,4 +58,9 @@ Hoy por fin termine de conectar la Api y conseguí que se viesen los posters de 
 - Apartados cartelera, populares, por salir y top puntuación en la pantalla principal
 - Cree pantalla ficha y todo la que lleva dentro
 
-### Día 12 (03/04/2024)
+### Despues de la presentación y antes del 17 de mayo
+
+Durante este periodo de tiempo he intentado mejorara las portadas de las peliculas, y la pantlla principal, 
+también he trabajado en el viewModel y en la pantalla "ficha", no he podido lograr grandes cambios ya que sigo trabado
+y sin poder avanzar debido a los mismos problemas que antes de la presentación. La aplicación funciona correctamente 
+teniendo en cuenta el contenido dado en clase antes de empezar con el proyecto, el cual esta todo aplicado en la aplicación.
