@@ -33,12 +33,12 @@ import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 
 @Composable
 //datos: PeliculaModel
-fun Ficha(){
+fun Ficha(peliculaInfo: PeliculaModel){
     Column(
         modifier = Modifier.padding(10.dp)
     ) {
         Text(
-            text = "Godzilla minus one",
+            text = peliculaInfo.nombrePelicula,
             fontSize = 20.sp,
             fontWeight = FontWeight.ExtraBold
         )
@@ -48,23 +48,23 @@ fun Ficha(){
                     text = "Fecha de estreno",
                     fontWeight = FontWeight.ExtraBold
                 )
-                Text(text = "2024-03-27")
+                Text(text = peliculaInfo.fechaLanzamiento)
                 Text(
                     text = "Nota",
                     fontWeight = FontWeight.ExtraBold
                 )
-                Text(text = "7.05")
+                Text(text = peliculaInfo.votoPromedio)
                 Text(
                     text = "Total de votos",
                     fontWeight = FontWeight.ExtraBold
                 )
-                Text(text = "204")
+                Text(text = peliculaInfo.totalVotos)
 
             }
-            Image(
-                painter = painterResource(id = R.drawable.godzilla),
+            AsyncImage(
+                model = "${Constantes.BASE_URL_IMAGEN}${peliculaInfo.poster}",  // Construir la URL de la imagen
                 contentDescription = "pelicula",
-                modifier = Modifier.size(200.dp)
+                modifier = Modifier.size(Constantes.IMAGEN_ANCHO.dp, Constantes.IMAGEN_ALTO.dp)
             )
         }
         Divider(
@@ -80,7 +80,7 @@ fun Ficha(){
             modifier = Modifier.padding(top = 10.dp)
         )
         Text(
-            text = "A pair of mice attempt to board Noah's Ark: Vini, a charismatic poet with terrible stage fright, and Tito, a talented and charming guitarist. When the rains come, only one male and one female of each species is allowed on Noah's Ark. With the help of an ingenious cockroach and fate's good luck, Vini and Tito sneak their way onto the Ark and together avert a showdown among the ships carnivores and plant eaters. All the while, the animals perform a series of classic songs inspired by world renowned poet, Vinicius de Moraes. Can these talented stowaways use music to break the tension and help these cooped up creatures survive the 40 days and 40 nights together?",
+            text = peliculaInfo.descripcion,
             modifier = Modifier.padding(
                 start = 10.dp,
                 end = 10.dp,

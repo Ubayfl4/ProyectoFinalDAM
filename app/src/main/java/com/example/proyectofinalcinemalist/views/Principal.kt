@@ -23,14 +23,75 @@ import com.example.proyectofinalcinemalist.network.response.PeliculasResponse
 import com.example.proyectofinalcinemalist.viewmodels.PeliculasViewModel
 
 
+//@Composable
+//fun Principal(
+//    viewModel: PeliculasViewModel,
+//    goToFicha: (PeliculaModel) -> Unit,
+//){
+//    val peliculas by viewModel.listaPeliculas.collectAsState()
+//    //val populares by viewModel.obtenerPopulares()
+//    var stateCard by remember{ mutableStateOf(false) }
+//
+//    Column {
+//        Text(
+//            text = "Populares",
+//            fontSize = 30.sp,
+//            fontWeight = FontWeight.ExtraBold,
+//            modifier = Modifier.padding(10.dp)
+//        )
+//        LazyRow(modifier = Modifier.fillMaxSize()){
+//            items(peliculas){
+//                CardPelicula(onClick = { !stateCard }, pelicula = it, )
+//            }
+//        }
+//        Text(
+//            text = "Cartelera",
+//            fontSize = 30.sp,
+//            fontWeight = FontWeight.ExtraBold,
+//            modifier = Modifier.padding(10.dp)
+//        )
+//        LazyRow(modifier = Modifier.fillMaxSize()){
+//            items(peliculas){
+//                CardPelicula(onClick = { goToFicha(it) }, pelicula = it, )
+//            }
+//        }
+//        Text(
+//            text = "Con mas puntuación",
+//            fontSize = 30.sp,
+//            fontWeight = FontWeight.ExtraBold,
+//            modifier = Modifier.padding(10.dp)
+//        )
+//        LazyRow(modifier = Modifier.fillMaxSize()){
+//            items(peliculas){
+//                CardPelicula(onClick = { goToFicha(it) }, pelicula = it, )
+//            }
+//        }
+//        Text(
+//            text = "Próximamente",
+//            fontSize = 30.sp,
+//            fontWeight = FontWeight.ExtraBold,
+//            modifier = Modifier.padding(10.dp)
+//        )
+//        LazyRow(modifier = Modifier.fillMaxSize()){
+//            items(peliculas){
+//                CardPelicula(onClick = { goToFicha(it) }, pelicula = it, )
+//            }
+//        }
+//        LazyRow(modifier = Modifier.fillMaxSize()){
+//
+//        }
+//    }
+//}
 @Composable
 fun Principal(
     viewModel: PeliculasViewModel,
     goToFicha: (PeliculaModel) -> Unit,
-){
-    val peliculas by viewModel.listaPeliculas.collectAsState()
-    //val populares by viewModel.obtenerPopulares()
-    var stateCard by remember{ mutableStateOf(false) }
+) {
+    val peliculasCartelera by viewModel.listaPeliculasCartelera.collectAsState()
+    val peliculasPopulares by viewModel.listaPeliculasPopulares.collectAsState()
+    val peliculasTopPuntuacion by viewModel.listaPeliculasTopPuntuacion.collectAsState()
+    val peliculasUpcoming by viewModel.listaPeliculasUpcoming.collectAsState()
+    var stateCard by remember { mutableStateOf(false) }
 
     Column {
         Text(
@@ -39,9 +100,9 @@ fun Principal(
             fontWeight = FontWeight.ExtraBold,
             modifier = Modifier.padding(10.dp)
         )
-        LazyRow(modifier = Modifier.fillMaxSize()){
-            items(peliculas){
-                CardPelicula(onClick = { !stateCard }, pelicula = it, )
+        LazyRow(modifier = Modifier.fillMaxSize()) {
+            items(peliculasPopulares) { pelicula ->
+                CardPelicula(onClick = { goToFicha(pelicula) }, pelicula = pelicula)
             }
         }
         Text(
@@ -50,20 +111,20 @@ fun Principal(
             fontWeight = FontWeight.ExtraBold,
             modifier = Modifier.padding(10.dp)
         )
-        LazyRow(modifier = Modifier.fillMaxSize()){
-            items(peliculas){
-                CardPelicula(onClick = { goToFicha(it) }, pelicula = it, )
+        LazyRow(modifier = Modifier.fillMaxSize()) {
+            items(peliculasCartelera) { pelicula ->
+                CardPelicula(onClick = { goToFicha(pelicula) }, pelicula = pelicula)
             }
         }
         Text(
-            text = "Con mas puntuación",
+            text = "Con más puntuación",
             fontSize = 30.sp,
             fontWeight = FontWeight.ExtraBold,
             modifier = Modifier.padding(10.dp)
         )
-        LazyRow(modifier = Modifier.fillMaxSize()){
-            items(peliculas){
-                CardPelicula(onClick = { goToFicha(it) }, pelicula = it, )
+        LazyRow(modifier = Modifier.fillMaxSize()) {
+            items(peliculasTopPuntuacion) { pelicula ->
+                CardPelicula(onClick = { goToFicha(pelicula) }, pelicula = pelicula)
             }
         }
         Text(
@@ -72,13 +133,10 @@ fun Principal(
             fontWeight = FontWeight.ExtraBold,
             modifier = Modifier.padding(10.dp)
         )
-        LazyRow(modifier = Modifier.fillMaxSize()){
-            items(peliculas){
-                CardPelicula(onClick = { goToFicha(it) }, pelicula = it, )
+        LazyRow(modifier = Modifier.fillMaxSize()) {
+            items(peliculasUpcoming) { pelicula ->
+                CardPelicula(onClick = { goToFicha(pelicula) }, pelicula = pelicula)
             }
-        }
-        LazyRow(modifier = Modifier.fillMaxSize()){
-
         }
     }
 }

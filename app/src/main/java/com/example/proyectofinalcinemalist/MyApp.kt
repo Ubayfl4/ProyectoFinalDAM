@@ -117,14 +117,14 @@ fun Contenido(
                         }
                     )
                 }
-                composable(Pantallas.Principal.name){
+                composable(Pantallas.Principal.name) {
                     showTopBar = true
                     Principal(
                         viewModel,
-                        goToFicha = {
-                            navController.navigate(Pantallas.Ficha.name)
+                        goToFicha = { pelicula ->
+                            navController.navigate("${Pantallas.Ficha.name}/${pelicula.id}")
                         }
-                        )
+                    )
                 }
                 composable(Pantallas.Perfil.name){
                     showTopBar = true
@@ -134,10 +134,16 @@ fun Contenido(
                     showTopBar = true
                     Listas()
                 }
-                composable(Pantallas.Ficha.name,){
+                composable(
+                    route = "${Pantallas.Ficha.name}/{peliculaId}",
+                    arguments = listOf(navArgument("peliculaId") { type = NavType.IntType })
+                ) { backStackEntry ->
                     showTopBar = true
-                    Ficha()
-
+                    val peliculaId = backStackEntry.arguments?.getInt("peliculaId")
+                    val pelicula = viewModel.obtenerPeliculaPorId(peliculaId!!)
+                    pelicula?.let {
+                        Ficha(it)
+                    }
                 }
             }
         }
