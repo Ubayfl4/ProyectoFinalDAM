@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.proyectofinalcinemalist.core.Constantes
 import com.example.proyectofinalcinemalist.models.PeliculaModel
 import com.example.proyectofinalcinemalist.network.RetrofitClient
-import dagger.hilt.android.lifecycle.HiltViewModel
+//import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

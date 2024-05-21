@@ -58,9 +58,15 @@ Hoy por fin termine de conectar la Api y conseguí que se viesen los posters de 
 - Apartados cartelera, populares, por salir y top puntuación en la pantalla principal
 - Cree pantalla ficha y todo la que lleva dentro
 
-### Despues de la presentación y antes del 17 de mayo
+### Despues de la presentación parte 1
 
 Durante este periodo de tiempo he intentado mejorara las portadas de las peliculas, y la pantlla principal, 
 también he trabajado en el viewModel y en la pantalla "ficha", no he podido lograr grandes cambios ya que sigo trabado
-y sin poder avanzar debido a los mismos problemas que antes de la presentación. La aplicación funciona correctamente 
-teniendo en cuenta el contenido dado en clase antes de empezar con el proyecto, el cual esta todo aplicado en la aplicación.
+y sin poder avanzar debido a los mismos problemas que antes de la presentación. La aplicación funciona correctamente.
+
+### Despues de la presentación parte 2
+
+Consiguí arreglar los 2 grandes fallos que tenía la aplicación, por una parte, en la pantalla principal ya
+se ven las diferentes listas de películas correctamente, y el segundo fallo que corregí fue la pantalla de ficha
+que era donde se veía la información de cada película, ahora por fin se ve correctamente. Los fallos estaban relacionados 
+con el viewModel como yo sospechaba.
